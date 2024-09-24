@@ -3,7 +3,8 @@
     "next/core-web-vitals",
     "next/typescript",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
   ],
   "plugins": [
     "prettier",
