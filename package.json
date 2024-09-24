@@ -13,7 +13,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "storybook:test": "test-storybook",
-    "storybook:coverage": "test-storybook --coverage"
+    "storybook:coverage": "test-storybook --coverage",
+    "test": "npm run check && npm run storybook:test"
   },
   "dependencies": {
     "next": "14.2.13",
