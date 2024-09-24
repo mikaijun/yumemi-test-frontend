@@ -1,0 +1,40 @@
+name: CI Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build_and_test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Set up environment variables
+        run: echo "RESAS_API_KEY=${{ secrets.RESAS_API_KEY }}" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Next.js app
+        run: npm run build
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Run lint, tsc, and stylelint (npm run check)
+        run: npm run check
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Build Storybook
+        run: npm run build-storybook
+      - name: Start Storybook server
+        run: npm run storybook -- --ci &
+        continue-on-error: true
+      - name: Run Storybook tests
+        run: npx wait-on http://localhost:6006 && npm run storybook:test
