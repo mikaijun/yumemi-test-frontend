@@ -1,0 +1,58 @@
+@import "variables";
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-wrapper > .checkbox {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-wrapper > .unchecked {
+  @extend .checkbox;
+
+  background-color: $white;
+  border: 1px solid $black;
+}
+
+.checkbox-wrapper > .checked {
+  @extend .checkbox;
+
+  background-color: $primary;
+  color: $secondary;
+  border: 1px solid $primary;
+}
+
+.checkbox-wrapper > .checkbox > .mark {
+  font-size: 14px;
+  color: $white;
+}
+
+.checkbox-wrapper > .label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-wrapper > .checkbox:disabled {
+  opacity: 0.5;
+  background-color: $gray;
+  cursor: not-allowed;
+}
+
+.checkbox-wrapper > .checkbox:disabled > .mark {
+  font-size: 14px;
+  color: $gray;
+}
+
+.checkbox-wrapper > .checkbox:disabled + .label {
+  cursor: not-allowed;
+  color: $gray;
+}
