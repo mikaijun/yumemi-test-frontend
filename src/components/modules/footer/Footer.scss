@@ -1,0 +1,12 @@
+@import "variables";
+
+.footer-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: $white;
+  border-top: 1px solid $gray;
+}
