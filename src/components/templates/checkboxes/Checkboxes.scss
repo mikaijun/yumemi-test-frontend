@@ -1,0 +1,19 @@
+.checkboxes-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.checkboxes-horizontal {
+  @extend .checkboxes-wrapper;
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkboxes-vertical {
+  @extend .checkboxes-wrapper;
+
+  flex-direction: column;
+}
