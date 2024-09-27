@@ -1,0 +1,19 @@
+.prefecture-population-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.prefecture-population-wrapper > .checkboxes {
+  margin-bottom: 1.5rem;
+}
+
+.prefecture-population-wrapper > .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 640px;
+}
+
+.prefecture-population-wrapper > .tabs {
+  margin-bottom: 2rem;
+}
