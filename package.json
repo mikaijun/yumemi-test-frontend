@@ -56,5 +56,16 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-prettier": "^5.0.2",
     "typescript": "^5.4.2"
+  },
+  "imports": {
+    "#useFetchPrefecturePopulation": {
+      "storybook": "./src/components/pages/prefecturePopulation/PrefecturePopulation.mock.ts",
+      "default": "./src/components/pages/prefecturePopulation/PrefecturePopulation.api.ts"
+    },
+    "#*": [
+      "./*",
+      "./*.ts",
+      "./*.tsx"
+    ]
   }
 }
