@@ -1,5 +1,6 @@
+import { useSuspenseQueries } from "@tanstack/react-query";
+import { CheckboxesProps } from "@/components/templates/checkboxes";
 import { Population } from "@/app/api/population/route";
-import { CheckboxesProps } from "@/components/templates/checkboxes/Checkboxes";
 
 export type FetchPrefecturePopulationType = {
   populationData: Population["data"];
@@ -7,10 +8,32 @@ export type FetchPrefecturePopulationType = {
   prefName: string;
 }[];
 
-// NOTE: Mockを定義するために仮のメソッドを定義
-// TODO: 以下にAPIの処理を追加する
-export const useFetchPrefecturePopulation = ({}: {
+const fetchPopulationData = async (prefCode: string) => {
+  const params = new URLSearchParams({
+    prefCode: prefCode.toString(),
+    cityCode: "-",
+  });
+  const res = await fetch(`api/population?${params}`);
+  const data: Population["data"] = await res.json();
+  return { data };
+};
+
+export const useFetchPrefecturePopulation = ({
+  prefectureCheckboxes,
+}: {
   prefectureCheckboxes: CheckboxesProps["checkboxes"];
 }): FetchPrefecturePopulationType => {
-  return [];
+  const queries = prefectureCheckboxes.map(({ label, id }) => ({
+    queryKey: ["population-data", id],
+    queryFn: () =>
+      fetchPopulationData(id).then(({ data }) => ({
+        prefCode: Number(id),
+        prefName: label,
+        populationData: data,
+      })),
+  }));
+
+  const results = useSuspenseQueries({ queries });
+
+  return results.map((r) => r.data);
 };

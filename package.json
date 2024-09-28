@@ -17,6 +17,8 @@
     "test": "npm run check && npm run storybook:test"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.56.2",
+    "@tanstack/react-query-next-experimental": "^5.56.2",
     "classnames": "^2.5.1",
     "next": "14.2.13",
     "react": "^18",
