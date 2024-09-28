@@ -111,11 +111,11 @@ const meta = {
   component: PrefecturePopulation,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: "16px" }}>
+      <div style={{ padding: "32px", maxWidth: "1200px" }}>
         <Story />
       </div>
     ),
