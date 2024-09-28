@@ -2,10 +2,10 @@ import { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within, expect } from "@storybook/test";
 import { GraphTabs } from "./GraphTabs";
 import {
-  generatePopulationData,
-  getPrefectures,
-  labelProps,
-} from "@/mock/prefecturePopulation";
+  generateMockPopulation,
+  getMockPrefectures,
+  mockGraphLabelProps,
+} from "@/components/parts/graph/Graph.mock";
 
 const meta = {
   title: "Template/GraphTabs",
@@ -30,8 +30,8 @@ const testGraphLabels: Story["play"] = async ({ canvasElement, step }) => {
   const canvas = within(canvasElement);
   const [firstTab, secondTab] = canvas.getAllByRole("tab");
   await step("ラベルが正しく表示されていることを確認", async () => {
-    await canvas.findByText(labelProps.xAxisLabel);
-    await canvas.findByText(labelProps.yAxisLabel);
+    await canvas.findByText(mockGraphLabelProps.xAxisLabel);
+    await canvas.findByText(mockGraphLabelProps.yAxisLabel);
   });
 
   const initialPanel = canvas.getByRole("tabpanel");
@@ -58,12 +58,12 @@ const testGraphLabels: Story["play"] = async ({ canvasElement, step }) => {
 export const Default: Story = {
   args: {
     graphData: {
-      tab1: [...generatePopulationData(3)],
-      tab2: [...generatePopulationData(3)],
-      tab3: [...generatePopulationData(3)],
+      tab1: [...generateMockPopulation(3)],
+      tab2: [...generateMockPopulation(3)],
+      tab3: [...generateMockPopulation(3)],
     },
-    lines: getPrefectures(3),
-    ...labelProps,
+    lines: getMockPrefectures(3),
+    ...mockGraphLabelProps,
   },
   play: testGraphLabels,
 };
