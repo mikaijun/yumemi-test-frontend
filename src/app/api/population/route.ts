@@ -1,3 +1,6 @@
+import { NextRequest, NextResponse } from "next/server";
+import { fetchResasApi } from "../resas-helper";
+
 type Data = {
   label: string;
   data: {
@@ -21,4 +24,21 @@ export type Population = {
   ];
 };
 
-// TODO: 以下にAPIの処理を追加する
+/**
+ * 人口構成データを取得するAPI
+ *
+ * @see https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html
+ */
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const prefCode = searchParams.get("prefCode") ?? "";
+
+  const params = new URLSearchParams({
+    prefCode: prefCode.toString(),
+    cityCode: "-",
+  });
+  const res = await fetchResasApi<Population>(
+    `/population/composition/perYear?${params}`,
+  );
+  return NextResponse.json(res.data);
+}
