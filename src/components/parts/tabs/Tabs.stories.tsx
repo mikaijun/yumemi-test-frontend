@@ -26,7 +26,7 @@ const tabs = [
 ];
 
 const meta = {
-  title: "Module/Tabs",
+  title: "Parts/Tabs",
   component: Tabs,
   tags: ["autodocs"],
   parameters: {

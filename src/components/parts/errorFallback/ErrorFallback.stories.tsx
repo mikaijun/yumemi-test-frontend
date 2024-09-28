@@ -11,7 +11,7 @@ const testError: Story["play"] = async ({ canvasElement, step }) => {
 };
 
 const meta = {
-  title: "Module/ErrorFallback",
+  title: "Parts/ErrorFallback",
   tags: ["autodocs"],
   component: ErrorFallback,
   parameters: {

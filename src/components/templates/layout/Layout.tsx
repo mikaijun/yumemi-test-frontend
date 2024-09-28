@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { Header } from "@/components/modules/header";
-import { Footer } from "@/components/modules/footer";
+import { Header } from "@/components/parts/header";
+import { Footer } from "@/components/parts/footer";
 import "./Layout.scss";
 
 export type LayoutProps = {

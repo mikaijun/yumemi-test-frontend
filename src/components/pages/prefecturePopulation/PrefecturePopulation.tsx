@@ -6,10 +6,10 @@ import {
   transformPopulationDataForGraph,
   usePrefecturePopulation,
 } from "./PrefecturePopulation.hooks";
-import { ErrorFallback } from "@/components/modules/errorFallback";
+import { ErrorFallback } from "@/components/parts/errorFallback";
 import { Checkboxes, CheckboxesProps } from "@/components/templates/checkboxes";
 import { GraphTabs } from "@/components/templates/graphTabs";
-import { Loader } from "@/components/modules/loader";
+import { Loader } from "@/components/parts/loader";
 import { useFetchPrefecturePopulation } from "#useFetchPrefecturePopulation";
 import "./PrefecturePopulation.scss";
 

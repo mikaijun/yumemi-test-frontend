@@ -110,7 +110,7 @@ const testDisabledCheckbox = async (
 };
 
 const meta = {
-  title: "Module/Checkbox",
+  title: "Parts/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
   parameters: {

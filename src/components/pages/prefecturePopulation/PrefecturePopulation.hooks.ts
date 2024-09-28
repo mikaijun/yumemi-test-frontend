@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { CheckboxesProps } from "@/components/templates/checkboxes";
-import { GraphProps } from "@/components/modules/graph";
+import { GraphProps } from "@/components/parts/graph";
 import { Population } from "@/app/api/population/route";
 import { FetchPrefecturePopulationType } from "#useFetchPrefecturePopulation";
 

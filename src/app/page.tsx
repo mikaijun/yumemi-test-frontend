@@ -2,7 +2,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { Prefectures } from "./api/prefectures/route";
-import { ErrorFallback } from "@/components/modules/errorFallback";
+import { ErrorFallback } from "@/components/parts/errorFallback";
 import { PrefecturePopulation } from "@/components/pages/prefecturePopulation";
 
 export default async function Home() {
