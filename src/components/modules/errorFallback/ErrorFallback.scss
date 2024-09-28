@@ -1,0 +1,17 @@
+.error-fallback-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.error-fallback-wrapper > .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.error-fallback-wrapper > .message {
+  font-size: 0.75rem;
+  font-family: monospace;
+}
