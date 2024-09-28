@@ -48,7 +48,7 @@ const testAllPrefectures: Story["play"] = async ({ step }) => {
 };
 
 const meta = {
-  title: "Module/Graph",
+  title: "Parts/Graph",
   component: Graph,
   tags: ["autodocs"],
   parameters: {

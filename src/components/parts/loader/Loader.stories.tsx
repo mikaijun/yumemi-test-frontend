@@ -11,7 +11,7 @@ const testLoader: Story["play"] = async ({ canvasElement, step }) => {
 };
 
 const meta = {
-  title: "Module/Loader",
+  title: "Parts/Loader",
   tags: ["autodocs"],
   component: Loader,
   parameters: {

@@ -1,7 +1,7 @@
 import { FC, ComponentPropsWithoutRef } from "react";
 import classNames from "classnames";
 import { useCheckboxes } from "./Checkboxes.hooks";
-import { Checkbox, CheckboxProps } from "@/components/modules/checkbox";
+import { Checkbox, CheckboxProps } from "@/components/parts/checkbox";
 import "./Checkboxes.scss";
 
 type CheckboxOption = Required<Pick<CheckboxProps, "label" | "id">>;

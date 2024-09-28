@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { Tabs } from "@/components/modules/tabs";
-import { Graph, GraphProps } from "@/components/modules/graph";
+import { Tabs } from "@/components/parts/tabs";
+import { Graph, GraphProps } from "@/components/parts/graph";
 
 type GraphTabsProps = Omit<GraphProps, "data"> & {
   graphData: Record<string, GraphProps["data"]>;
