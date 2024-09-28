@@ -8,7 +8,7 @@ import {
 } from "@/components/parts/graph/Graph.mock";
 
 const meta = {
-  title: "Template/GraphTabs",
+  title: "Templates/GraphTabs",
   component: GraphTabs,
   tags: ["autodocs"],
   parameters: {
