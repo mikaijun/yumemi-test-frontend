@@ -1,10 +1,12 @@
 "use client";
 
 import { FC, Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   transformPopulationDataForGraph,
   usePrefecturePopulation,
 } from "./PrefecturePopulation.hooks";
+import { ErrorFallback } from "@/components/modules/errorFallback";
 import { Checkboxes, CheckboxesProps } from "@/components/templates/checkboxes";
 import { GraphTabs } from "@/components/templates/graphTabs";
 import { Loader } from "@/components/modules/loader";
@@ -34,7 +36,9 @@ export const PrefecturePopulation: FC<PrefecturePopulationProps> = ({
           </div>
         }
       >
-        <PrefectureGraphTabs prefectureCheckboxes={selectedCheckboxes} />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <PrefectureGraphTabs prefectureCheckboxes={selectedCheckboxes} />
+        </ErrorBoundary>
       </Suspense>
     </div>
   );

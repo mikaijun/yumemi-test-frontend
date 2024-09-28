@@ -1,12 +1,16 @@
+import { ErrorBoundary } from "react-error-boundary";
 import { Suspense } from "react";
 import { headers } from "next/headers";
 import { Prefectures } from "./api/prefectures/route";
+import { ErrorFallback } from "@/components/modules/errorFallback";
 import { PrefecturePopulation } from "@/components/pages/prefecturePopulation";
 
 export default async function Home() {
   return (
     <Suspense>
-      <PrefecturePopulationPage />
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <PrefecturePopulationPage />
+      </ErrorBoundary>
     </Suspense>
   );
 }
