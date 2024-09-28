@@ -1,4 +1,4 @@
-export const prefectures = [
+export const mockPrefectures = [
   { key: 1, name: "北海道" },
   { key: 2, name: "青森県" },
   { key: 3, name: "岩手県" },
@@ -48,15 +48,15 @@ export const prefectures = [
   { key: 47, name: "沖縄県" },
 ];
 
-export const labelProps = {
+export const mockGraphLabelProps = {
   xAxisLabel: "年(年度)",
   yAxisLabel: "人口(人)",
   xTooltipLabel: "年",
   yTooltipLabel: "人",
 };
 
-export const getPrefectures = (count: number) =>
-  prefectures
+export const getMockPrefectures = (count: number) =>
+  mockPrefectures
     .map((prefecture) => {
       return {
         key: String(prefecture.key),
@@ -65,9 +65,9 @@ export const getPrefectures = (count: number) =>
     })
     .slice(0, count);
 
-export const generatePopulationData = (count: number) => {
+export const generateMockPopulation = (count: number) => {
   const years = Array.from({ length: 2045 - 1965 + 1 }, (_, i) => 1965 + i);
-  const selectedPrefectures = getPrefectures(count);
+  const selectedPrefectures = getMockPrefectures(count);
   return years.map((year, index) => ({
     xValue: year,
     yValues: selectedPrefectures.reduce(

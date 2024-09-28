@@ -3,17 +3,17 @@ import { within, expect, screen } from "@storybook/test";
 import { StepFunction } from "@storybook/core/types";
 import { Graph } from "./Graph";
 import {
-  generatePopulationData,
-  getPrefectures,
-  labelProps,
-  prefectures,
-} from "@/mock/prefecturePopulation";
+  generateMockPopulation,
+  getMockPrefectures,
+  mockGraphLabelProps,
+  mockPrefectures,
+} from "./Graph.mock";
 
 const testGraphLabels: Story["play"] = async ({ canvasElement, step }) => {
   const canvas = within(canvasElement);
   await step("ラベルが正しく表示されていることを確認", async () => {
-    await canvas.findByText(labelProps.xAxisLabel);
-    await canvas.findByText(labelProps.yAxisLabel);
+    await canvas.findByText(mockGraphLabelProps.xAxisLabel);
+    await canvas.findByText(mockGraphLabelProps.yAxisLabel);
   });
 };
 
@@ -29,21 +29,21 @@ const testPrefectureNames = async (
 };
 
 const testSinglePrefecture: Story["play"] = async ({ step }) => {
-  const prefectureNames = getPrefectures(1).map(
+  const prefectureNames = getMockPrefectures(1).map(
     (prefecture) => prefecture.name,
   );
   await testPrefectureNames(step, prefectureNames);
 };
 
 const testTenPrefectures: Story["play"] = async ({ step }) => {
-  const prefectureNames = getPrefectures(10).map(
+  const prefectureNames = getMockPrefectures(10).map(
     (prefecture) => prefecture.name,
   );
   await testPrefectureNames(step, prefectureNames);
 };
 
 const testAllPrefectures: Story["play"] = async ({ step }) => {
-  const prefectureNames = prefectures.map((prefecture) => prefecture.name);
+  const prefectureNames = mockPrefectures.map((prefecture) => prefecture.name);
   await testPrefectureNames(step, prefectureNames);
 };
 
@@ -61,9 +61,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Data1: Story = {
   args: {
-    data: generatePopulationData(1),
-    lines: getPrefectures(1),
-    ...labelProps,
+    data: generateMockPopulation(1),
+    lines: getMockPrefectures(1),
+    ...mockGraphLabelProps,
   },
   play: async (context) => {
     await testGraphLabels(context);
@@ -73,9 +73,9 @@ export const Data1: Story = {
 
 export const Data10: Story = {
   args: {
-    data: generatePopulationData(10),
-    lines: getPrefectures(10),
-    ...labelProps,
+    data: generateMockPopulation(10),
+    lines: getMockPrefectures(10),
+    ...mockGraphLabelProps,
   },
   play: async (context) => {
     await testGraphLabels(context);
@@ -85,9 +85,9 @@ export const Data10: Story = {
 
 export const Data47: Story = {
   args: {
-    data: generatePopulationData(47),
-    lines: getPrefectures(47),
-    ...labelProps,
+    data: generateMockPopulation(47),
+    lines: getMockPrefectures(47),
+    ...mockGraphLabelProps,
   },
   play: async (context) => {
     await testGraphLabels(context);

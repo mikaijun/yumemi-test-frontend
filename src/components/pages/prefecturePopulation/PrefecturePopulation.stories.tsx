@@ -1,23 +1,26 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within, screen } from "@storybook/test";
 import { PrefecturePopulation } from "./PrefecturePopulation";
-import { labelProps, prefectures } from "@/mock/prefecturePopulation";
+import {
+  mockGraphLabelProps,
+  mockPrefectures,
+} from "@/components/parts/graph/Graph.mock";
 
 const FIRST_PREFECTURE_INDEX = 0;
 const SECOND_PREFECTURE_INDEX = 1;
 
 const verifyLabelsNotDisplayed = async (canvas: ReturnType<typeof within>) => {
   await expect(
-    canvas.queryByText(labelProps.xAxisLabel),
+    canvas.queryByText(mockGraphLabelProps.xAxisLabel),
   ).not.toBeInTheDocument();
   await expect(
-    canvas.queryByText(labelProps.yAxisLabel),
+    canvas.queryByText(mockGraphLabelProps.yAxisLabel),
   ).not.toBeInTheDocument();
 };
 
 const verifyLabelsDisplayed = async (canvas: ReturnType<typeof within>) => {
-  await canvas.findByText(labelProps.xAxisLabel);
-  await canvas.findByText(labelProps.yAxisLabel);
+  await canvas.findByText(mockGraphLabelProps.xAxisLabel);
+  await canvas.findByText(mockGraphLabelProps.yAxisLabel);
 };
 
 const toggleCheckbox = async (
@@ -63,7 +66,7 @@ const testPrefecturePopulation: Story["play"] = async ({
     async () => {
       await toggleCheckbox(canvas, FIRST_PREFECTURE_INDEX, "true");
       await toggleCheckbox(canvas, SECOND_PREFECTURE_INDEX, "true");
-      const selectedPrefectures = prefectures.slice(
+      const selectedPrefectures = mockPrefectures.slice(
         FIRST_PREFECTURE_INDEX,
         SECOND_PREFECTURE_INDEX + 1,
       );
@@ -127,7 +130,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    prefectureCheckboxes: prefectures.map((prefecture) => ({
+    prefectureCheckboxes: mockPrefectures.map((prefecture) => ({
       id: prefecture.key.toString(),
       label: prefecture.name,
     })),

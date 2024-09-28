@@ -1,14 +1,14 @@
 import { fn } from "@storybook/test";
-import {
-  generatePopulationData,
-  prefectures,
-} from "@/mock/prefecturePopulation";
 import { CheckboxesProps } from "@/components/templates/checkboxes";
+import {
+  generateMockPopulation,
+  mockPrefectures,
+} from "@/components/parts/graph/Graph.mock";
 import { FetchPrefecturePopulationType } from "#useFetchPrefecturePopulation";
 
-const populationData = generatePopulationData(47);
+const mockPopulation = generateMockPopulation(47);
 
-const prefecturePopulation: FetchPrefecturePopulationType = prefectures.map(
+const prefecturePopulation: FetchPrefecturePopulationType = mockPrefectures.map(
   ({ key, name }) => {
     const prefCode = key;
     const prefName = name;
@@ -20,7 +20,7 @@ const prefecturePopulation: FetchPrefecturePopulationType = prefectures.map(
       populationData: [
         {
           label: "総人口",
-          data: populationData.map(({ xValue, yValues }) => ({
+          data: mockPopulation.map(({ xValue, yValues }) => ({
             year: xValue,
             value: yValues[1] * randomFactor + randomStartValue,
             rate: yValues[0] * randomFactor + randomStartValue,
@@ -28,7 +28,7 @@ const prefecturePopulation: FetchPrefecturePopulationType = prefectures.map(
         },
         {
           label: "年少人口",
-          data: populationData.map(({ xValue, yValues }) => ({
+          data: mockPopulation.map(({ xValue, yValues }) => ({
             year: xValue,
             value: yValues[1] * randomFactor + randomStartValue,
             rate: yValues[0] * randomFactor + randomStartValue,
@@ -36,7 +36,7 @@ const prefecturePopulation: FetchPrefecturePopulationType = prefectures.map(
         },
         {
           label: "生産年齢人口",
-          data: populationData.map(({ xValue, yValues }) => ({
+          data: mockPopulation.map(({ xValue, yValues }) => ({
             year: xValue,
             value: yValues[2] * randomFactor + randomStartValue,
             rate: yValues[0] * randomFactor + randomStartValue,
@@ -44,7 +44,7 @@ const prefecturePopulation: FetchPrefecturePopulationType = prefectures.map(
         },
         {
           label: "老年人口",
-          data: populationData.map(({ xValue, yValues }) => ({
+          data: mockPopulation.map(({ xValue, yValues }) => ({
             year: xValue,
             value: yValues[3] * randomFactor + randomStartValue,
             rate: yValues[0] * randomFactor + randomStartValue,
