@@ -27,8 +27,12 @@
   @extend .checkbox;
 
   background-color: $primary;
-  color: $secondary;
   border: 1px solid $primary;
+}
+
+.checkbox-wrapper > .unchecked:focus-visible {
+  outline: 2px solid rgba($primary, 0.5);
+  outline-offset: 2px;
 }
 
 .checkbox-wrapper > .checkbox > .mark {
