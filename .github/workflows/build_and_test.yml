@@ -38,3 +38,11 @@ jobs:
         continue-on-error: true
       - name: Run Storybook tests
         run: npx wait-on http://localhost:6006 && npm run storybook:test
+      - name: Run Playwright tests
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

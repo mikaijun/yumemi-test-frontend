@@ -14,12 +14,15 @@
     "build-storybook": "storybook build",
     "storybook:test": "test-storybook",
     "storybook:coverage": "test-storybook --coverage",
-    "test": "npm run check && npm run storybook:test"
+    "playwright": "playwright test",
+    "playwright:ui": "playwright test --ui",
+    "test": "npm run check && npm run storybook:test && npm run playwright"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",
     "@tanstack/react-query-next-experimental": "^5.56.2",
     "classnames": "^2.5.1",
+    "dotenv": "^16.4.5",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
+    "@playwright/test": "^1.47.2",
     "@storybook/addon-coverage": "^1.0.4",
     "@storybook/addon-essentials": "^8.3.3",
     "@storybook/addon-interactions": "^8.3.3",
