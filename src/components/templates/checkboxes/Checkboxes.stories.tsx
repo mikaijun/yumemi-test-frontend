@@ -6,9 +6,13 @@ const meta = {
   title: "Templates/Checkboxes",
   component: Checkboxes,
   tags: ["autodocs"],
-  parameters: {
-    layout: "centered",
-  },
+  decorators: [
+    (Story) => (
+      <div style={{ padding: "32px" }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof Checkboxes>;
 
 export default meta;
